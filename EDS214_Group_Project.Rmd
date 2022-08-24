@@ -10,11 +10,24 @@ library(tidyverse)
 library(here)
 ```
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
+#read in raw data 
 PRM <- read_csv(here('/courses/EDS214/gg_girls/raw_data','RioMameyesPuenteRoto.csv'))
 BQ1 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca1-Bisley.csv'))
 BQ2 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisley.csv'))
 BQ3 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisley.csv'))
 ```
 
+```{r}
+#data cleaning 
+PRM_clean <- PRM %>% 
+  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+BQ1_clean <- BQ1 %>% 
+  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+BQ2_clean <- BQ2 %>% 
+  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+BQ3_clean <- BQ3 %>% 
+  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+  
+```
 
