@@ -10,3 +10,11 @@ library(tidyverse)
 library(here)
 ```
 
+```{r}
+PRM <- read_csv(here('/courses/EDS214/gg_girls/raw_data','RioMameyesPuenteRoto.csv'))
+BQ1 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca1-Bisley.csv'))
+BQ2 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisley.csv'))
+BQ3 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisley.csv'))
+```
+
+
