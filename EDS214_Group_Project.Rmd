@@ -33,9 +33,6 @@ BQ3_clean <- BQ3 %>%
 ```
 
 ```{r}
-BQ1_BQ2 <- full_join(BQ1_clean, BQ2_clean)
-BQ1_BQ2_BQ3 <- full_join(BQ1_BQ2, BQ3_clean)
-Joined <- full_join(BQ1_BQ2_BQ3, PRM_clean)
+Joined <- bind_rows(BQ1_clean, BQ2_clean, BQ3_clean, PRM_clean)
 ```
-
 
