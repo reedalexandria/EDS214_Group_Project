@@ -21,13 +21,21 @@ BQ3 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisle
 ```{r}
 #data cleaning 
 PRM_clean <- PRM %>% 
-  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+  select(Sample_Date, `NO3-N`, K, `NH4-N`, Sample_ID)
 BQ1_clean <- BQ1 %>% 
-  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+  select(Sample_Date, `NO3-N`, K, `NH4-N`, Sample_ID)
 BQ2_clean <- BQ2 %>% 
-  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+  select(Sample_Date, `NO3-N`, K, `NH4-N`, Sample_ID)
 BQ3_clean <- BQ3 %>% 
-  select(Sample_Date, `NO3-N`, K, `NH4-N`)
+  select(Sample_Date, `NO3-N`, K, `NH4-N`, Sample_ID)|>
+  mutate(Sample_ID = "Q3")
   
 ```
+
+```{r}
+BQ1_BQ2 <- full_join(BQ1_clean, BQ2_clean)
+BQ1_BQ2_BQ3 <- full_join(BQ1_BQ2, BQ3_clean)
+Joined <- full_join(BQ1_BQ2_BQ3, PRM_clean)
+```
+
 
