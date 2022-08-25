@@ -51,4 +51,10 @@ Further Investigation on Ammonia
 ---
 Authors
 
---
+---
+Find our work
+class: center, middle
+![](/courses/EDS214/gg_girls/images/github-groupproject-qr.png)
+---
+
+
