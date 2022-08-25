@@ -1,0 +1,54 @@
+---
+title: "Impacts of Hurricane Hugo on Stream Chemistry at the Luquillo LTER Site"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: style_duo_accent
+      highlightLines: true
+      countIncremenalSlides: false
+date: "August 25, 2022"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(primary_color = "#0CA8C9",
+                 secondary_color = "#315B2C",
+                 code_inline_background_color = "#F7FFFF",
+                 inverse_text_color = "#FFFFFF",
+                 text_font_google = google_font("Poppins"),
+                 header_font_google = google_font("Poppins"),
+                 header_color = "#0CA8C9",
+                 title_slide_text_color = "#FFFFFF",
+                 header_h1_font_size = "50px"
+                  )
+
+```
+
+
+---
+```{r, echo=FALSE}
+
+
+```
+Introduction
+
+---
+Workflow
+
+---
+Analysis of Potassium and Nitrate levels
+
+
+---
+Further Investigation on Ammonia
+
+
+---
+Authors
+
+--
