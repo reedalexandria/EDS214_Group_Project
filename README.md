@@ -7,6 +7,7 @@ Using data from the Long Term Ecological Research Network on stream chemistries 
 # Table of contents
 
 -   [Installation](#installation)
+-   [Analysis] (#analysis)
 -   [Acknowledgements](#acknowledgements)
     -   [Authors](#authors)
     -   [Resources](#resources)
@@ -18,6 +19,19 @@ To reproduce or build on our work, you can go to our github repo to fork it and 
 
 ```git init```
 ```git clone https://github.com/reedalexandria/EDS214_Group_Project```
+
+# Analysis
+
+We first looked at the nitrate and potassium levels at three sites in the Loquillo Experimental Forest: 
+
+-   Quebrada one_Bisley (Q1)
+-   Quebrada two-Bisley (Q2)
+-   Quebrada three-Bisley (Q3)
+-   Puente Roto Mameyes (PRM)
+
+We saw noticeable increases in both nitrate and potassium levels following Hurricane Hugo in September 1989. 
+
+Based on the original analysis from William McDowell, ammonia levels also changed during the hurricane. We were unable to come to the same conclusion with our analysis of ammonia levels due to large amounts of missing data. But given more time, we could pursue this investigation further. 
 
 # Acknowledgements
 
