@@ -33,6 +33,28 @@ BQ3_clean <- BQ3 %>%
 ```
 
 ```{r}
+#joining cleaned data
 Joined <- bind_rows(BQ1_clean, BQ2_clean, BQ3_clean, PRM_clean)
 ```
+
+```{r}
+#summarizing variables by monthly averages 
+Joined_week <- lubridate::week(Joined$Sample_Date)
+Joined_yr <- lubridate::year(Joined$Sample_Date)
+Joined_mnth <- lubridate::month
+Joined <- Joined %>% 
+  mutate(Week = Joined_week, Year = Joined_yr) %>% 
+  group_by(Sample_ID, Year, Week) %>% 
+  summarize(MeanK = mean(K, na.rm=TRUE))
+```
+
+```{r}
+#create a ggplot
+joined <- Joined %>% 
+  filter(Year > 1988, Year < 1993)
+joined
+
+ggplot(data=joined, aes(x=Week, y=MeanK, color=Sample_ID)) + geom_line()
+```
+
 
