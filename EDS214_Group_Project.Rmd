@@ -10,6 +10,8 @@ library(tidyverse)
 library(here)
 ```
 
+## Read in the Data
+
 ```{r, message = FALSE, warning = FALSE}
 #read in raw data 
 PRM <- read_csv(here('/courses/EDS214/gg_girls/raw_data','RioMameyesPuenteRoto.csv'))
@@ -17,6 +19,8 @@ BQ1 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca1-Bisle
 BQ2 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisley.csv'))
 BQ3 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisley.csv'))
 ```
+
+## Clean the Data
 
 ```{r}
 #select data for relevant variables (data cleaning)
@@ -32,6 +36,8 @@ BQ3_clean <- BQ3 %>%
   
 ```
 
+## Join the Cleaned Data
+
 ```{r}
 #joining cleaned data
 Joined <- bind_rows(BQ1_clean, BQ2_clean, BQ3_clean, PRM_clean) 
@@ -42,8 +48,10 @@ Joined <- Joined %>%
 
 #subset joined data to select for years 1989-1992
 Joined_Sub <- Joined %>% 
-  filter(Year >=1989 & Year <= 1992)
+  filter(Year >=1989 & Year <= 1994)
 ```
+
+## Potassium Subset (1988-1994)
 
 ```{r}
 #Potassium:
@@ -55,6 +63,8 @@ Joined_Sub <- Joined %>%
   distinct(monthyear, meanK)
 ```
 
+Potassium Subset Plot
+
 ```{r}
 #Potassium:
 #create a ggplot of subsetted data
@@ -62,6 +72,8 @@ K_subset <- ggplot(data=Joined_Sub_K, aes(x=monthyear, y=meanK)) +
   geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
   theme(aspect.ratio = 1/3) 
 ```
+
+## Nitrate Subset (1988-1994)
 
 ```{r}
 #Nitrate:
@@ -73,6 +85,8 @@ K_subset <- ggplot(data=Joined_Sub_K, aes(x=monthyear, y=meanK)) +
   distinct(monthyear, meanN)
 ```
 
+Nitrate Subset Plot
+
 ```{r}
 #Nitrate:
 #create a ggplot of subsetted data
@@ -80,6 +94,8 @@ N_subset <- ggplot(data=Joined_Sub_N, aes(x=monthyear, y=meanN)) +
   geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
   theme(aspect.ratio = 1/3) 
 ```
+
+## Potassium and Nitrate (1986-2018)
 
 ```{r}
 #Potassium and Nitrate (all available years)
@@ -92,6 +108,8 @@ Joined <- Joined %>%
   distinct(monthyear, meanK, meanN)
 ```
 
+Potassium Plot (all years)
+
 ```{r}
 #Potassium Plot (all available years)
 #create a ggplot for all available data 
@@ -102,6 +120,8 @@ K_all <- ggplot(data=Joined, aes(x=monthyear, y=meanK)) +
 K_all
 ```
 
+Nitrate Plot (all years)
+
 ```{r}
 #Nitrate Plot (all available years)
 N_all <- ggplot(data=Joined, aes(x=monthyear, y=meanN)) + 
@@ -110,6 +130,3 @@ N_all <- ggplot(data=Joined, aes(x=monthyear, y=meanN)) +
 
 N_all
 ```
-
-
-
