@@ -54,7 +54,7 @@ Joined_Sub <- Joined %>%
 ## Potassium Subset (1988-1994)
 
 ```{r}
-#Potassium:
+#Potassium (subset) :
 #add mean K values to joined subset data 
  Joined_Sub_K <- Joined_Sub %>% 
   group_by(monthyear, Sample_ID) %>% 
@@ -66,7 +66,7 @@ Joined_Sub <- Joined %>%
 Potassium Subset Plot
 
 ```{r}
-#Potassium:
+#Potassium (subset) :
 #create a ggplot of subsetted data
 K_subset <- ggplot(data=Joined_Sub_K, aes(x=monthyear, y=meanK)) + 
   geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
@@ -76,7 +76,7 @@ K_subset <- ggplot(data=Joined_Sub_K, aes(x=monthyear, y=meanK)) +
 ## Nitrate Subset (1988-1994)
 
 ```{r}
-#Nitrate:
+#Nitrate (subset) :
 #add mean N values to joined subset data 
  Joined_Sub_N <- Joined_Sub %>% 
   group_by(monthyear, Sample_ID) %>% 
@@ -88,24 +88,25 @@ K_subset <- ggplot(data=Joined_Sub_K, aes(x=monthyear, y=meanK)) +
 Nitrate Subset Plot
 
 ```{r}
-#Nitrate:
+#Nitrate (subset) :
 #create a ggplot of subsetted data
 N_subset <- ggplot(data=Joined_Sub_N, aes(x=monthyear, y=meanN)) + 
   geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
   theme(aspect.ratio = 1/3) 
 ```
 
+
 ## Potassium and Nitrate (1986-2018)
 
 ```{r}
-#Potassium and Nitrate (all available years)
+#Potassium, Nitrate, and Ammonium (all available years)
 
 #add mean K and N values to joined data (including data for all available years)
 Joined <- Joined %>% 
   group_by(monthyear, Sample_ID) %>% 
-  mutate(meanK = mean(K, na.rm=TRUE), meanN = mean(`NO3-N`, na.rm=TRUE)) %>% 
-  select(Sample_ID, monthyear, meanK, meanN) %>% 
-  distinct(monthyear, meanK, meanN)
+  mutate(meanK = mean(K, na.rm=TRUE), meanN = mean(`NO3-N`, na.rm=TRUE), meanNH = mean(`NH4-N`, na.rm=TRUE)) %>% 
+  select(Sample_ID, monthyear, meanK, meanN, meanNH) %>% 
+  distinct(monthyear, meanK, meanN, meanNH)
 ```
 
 Potassium Plot (all years)
@@ -129,4 +130,13 @@ N_all <- ggplot(data=Joined, aes(x=monthyear, y=meanN)) +
   theme(aspect.ratio = 1/3)
 
 N_all
+```
+
+```{r}
+#Ammonium Plot (all available years)
+NH_all <- ggplot(data=Joined, aes(x=monthyear, y=meanNH)) + 
+  geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
+  theme(aspect.ratio = 1/3)
+
+NH_all
 ```
