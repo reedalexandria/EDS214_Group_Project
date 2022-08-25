@@ -34,7 +34,7 @@ library(DiagrammeR)
 
 ## Workflow
 
-```{r}
+```{r, echo=FALSE}
 DiagrammeR::grViz(diagram = "digraph flowchart {
 node [Title = Workflow, fontname = Arial, shape = oval, color = grey, style = filled]
   tab1 [label = '@@1']
@@ -184,7 +184,7 @@ ggplotly(N_subset)
 
 ---
 
-## Potassium, Nitrate, and Ammonium Data (1986-2018)
+## Potassium, Nitrate, and Ammonium Data (all years)
 
 ```{r}
 #Potassium, Nitrate, and Ammonium (all available years)
@@ -219,10 +219,16 @@ K_all <- ggplot(data=Joined, aes(x=monthyear, y=meanK)) +
   labs(x = "Years",
        y = y1) + 
   geom_vline(xintercept = 1989.6, color = "black", size = 0.5) +
-   annotate("text", x = 1993, y = 1.8, label = "hurricane Hugo", color = "black", size = 3)
+   annotate("text", x = 1993, y = 1.8, label = "hurricane Hugo",
+            color = "black", size = 3)
+```
 
-ggplotly(K_all)
+---
 
+## Potassium Plot (all years)
+
+```{r, echo=FALSE}
+K_all
 ```
 
 ---
@@ -244,22 +250,32 @@ N_all <- ggplot(data=Joined, aes(x=monthyear, y=meanN)) +
   labs(x = "Years",
        y = y2) + 
   geom_vline(xintercept = 1989.6, color = "black", size = 0.5) +
-  annotate("text", x = 1993, y = 700, label = "hurricane Hugo", color = "black", size = 3)
-
-ggplotly(N_all)
+  annotate("text", x = 1993, y = 700, label = "hurricane Hugo",
+           color = "black", size = 3)
 ```
 
 ---
 
-## Ammonium Plot (all years)
+## Nitrate Plot (all years)
 
-```{r, warning=FALSE, fig.height = 4, fig.width = 11}
+```{r, echo=FALSE}
+N_all
+```
+
+---
+
+## Stacked Plots
+
+```{r, warning=FALSE, fig.height = 4, fig.width = 11, echo = FALSE}
 #Patchwork - combining Potassium Plot & Nitrate Plot
 
 (K_all) / (N_all)
 
 ```
 
+---
+
+## Ammonium Plot (all years)
 
 ```{r}
 #Ammonium Plot (all available years)
@@ -276,7 +292,16 @@ NH_all <- ggplot(data=Joined, aes(x=monthyear, y=meanNH)) +
   labs(x = "Years",
        y = y3) + 
   geom_vline(xintercept = 1989.6, color = "black", size = 0.5) +
-  annotate("text", x = 1993, y = 125, label = "hurricane Hugo", color = "black", size = 3)
-
-ggplotly(NH_all)
+  annotate("text", x = 1993, y = 125, label = "hurricane Hugo",
+           color = "black", size = 3)
 ```
+
+---
+
+##Ammonium Plot (all years)
+
+```{r, echo=FALSE}
+NH_all
+```
+
+
