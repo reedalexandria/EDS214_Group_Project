@@ -8,7 +8,58 @@ date: "2022-08-24"
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(here)
+library(devtools)
+library(DiagrammeR)
+
 ```
+
+## Workflow
+
+```{r}
+DiagrammeR::grViz(diagram = "digraph flowchart {
+node [Title = Workflow, fontname = Arial, shape = oval, color = grey, style = filled]
+  tab1 [label = '@@1']
+  tab2 [label = '@@2']
+  tab3 [label = '@@3']
+  tab4 [label = '@@4']
+  tab5 [label = '@@5']
+  tab6 [label = '@@6']
+  tab7 [label = '@@7']
+  tab8 [label = '@@8']
+  tab9 [label = '@@9']
+  tab10 [label = '@@10']
+  
+  
+  tab1 -> tab2; 
+  tab2 -> tab3; 
+  tab2 -> tab4;
+  tab3 -> tab7; 
+  tab2 -> tab6; 
+  tab6 -> tab7;
+  tab2 -> tab5; 
+  tab5 -> tab7; 
+  tab4 -> tab7;
+  tab7 -> tab8;
+  tab8 -> tab9; 
+  tab9 -> tab10
+  
+}
+  
+  [1]: 'Set up GitHub Repository/Add Collaborators'
+  [2]: 'Read in the Data'    
+  [3]: 'PRM'
+  [4]: 'BQ1'
+  [5]: 'BQ2'
+  [6]: 'BQ3'
+  [7]: 'Clean Data'
+  [8]: 'Join Data'
+  [9]: 'Create Subsets and Plots for Potassium and Nitrate'
+  [10]: 'Combine Potassium and Nitrate Plots'
+")
+```
+
+
+
 
 ## Read in the Data
 
