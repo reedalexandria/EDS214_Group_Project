@@ -19,7 +19,7 @@ BQ3 <- read_csv(here('/courses/EDS214/gg_girls/raw_data', 'QuebradaCuenca2-Bisle
 ```
 
 ```{r}
-#data cleaning 
+#select data for relevant variables (data cleaning)
 PRM_clean <- PRM %>% 
   select(Sample_Date, `NO3-N`, K, `NH4-N`, Sample_ID)
 BQ1_clean <- BQ1 %>% 
@@ -34,27 +34,49 @@ BQ3_clean <- BQ3 %>%
 
 ```{r}
 #joining cleaned data
-Joined <- bind_rows(BQ1_clean, BQ2_clean, BQ3_clean, PRM_clean)
-```
+Joined <- bind_rows(BQ1_clean, BQ2_clean, BQ3_clean, PRM_clean) 
 
-```{r}
-#summarizing variables by monthly averages 
-Joined_week <- lubridate::week(Joined$Sample_Date)
-Joined_yr <- lubridate::year(Joined$Sample_Date)
-Joined_mnth <- lubridate::month
+#add month, year, and month-year columns to joined data
 Joined <- Joined %>% 
-  mutate(Week = Joined_week, Year = Joined_yr) %>% 
-  group_by(Sample_ID, Year, Week) %>% 
-  summarize(MeanK = mean(K, na.rm=TRUE))
+  mutate(Year = lubridate::year(Sample_Date), Month = lubridate::month(Sample_Date), monthyear = zoo::as.yearmon(paste(Year, Month), "%Y %m")) 
+
+#subset joined data to select for years 1989-1992
+Joined_Sub <- Joined %>% 
+  filter(Year >=1989 & Year <= 1992)
+
+#add mean K values to joined subset data 
+ Joined_Sub <- Joined_Sub %>% 
+  group_by(monthyear, Sample_ID) %>% 
+  mutate(meanK = mean(K, na.rm=TRUE)) %>% 
+  select(Sample_ID, monthyear, meanK) %>% 
+  distinct(monthyear, meanK)
+
+ Joined_Sub
+#add mean K values to joined data (including data for all available years)
+Joined <- Joined %>% 
+  group_by(monthyear, Sample_ID) %>% 
+  mutate(meanK = mean(K, na.rm=TRUE)) %>% 
+  select(Sample_ID, monthyear, meanK) %>% 
+  distinct(monthyear, meanK)
+
+max(Joined_Sub$meanK)
 ```
 
 ```{r}
-#create a ggplot
-joined <- Joined %>% 
-  filter(Year > 1988, Year < 1993)
-joined
-
-ggplot(data=joined, aes(x=Week, y=MeanK, color=Sample_ID)) + geom_line()
+#create a ggplot of subsetted data
+ggplot(data=Joined_Sub, aes(x=monthyear, y=meanK)) + geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
+  theme(aspect.ratio = 1/3) 
 ```
+```{r}
+#create a ggplot for all available data 
+ggplot(data=Joined, aes(x=monthyear, y=meanK)) + geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
+  theme(aspect.ratio = 1/3)
+```
+
+
+
+
+
+
 
 
