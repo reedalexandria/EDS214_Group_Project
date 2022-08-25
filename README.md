@@ -12,13 +12,13 @@ Using data from the Long Term Ecological Research Network on stream chemistries 
     -   [Authors](#authors)
     -   [Resources](#resources)
 
-# Installation {#installation}
+# Installation
 
 To reproduce or build on our work, you can go to our github repo to fork it and make a clone. You use the terminal commands below or simply visit: <https://github.com/reedalexandria/EDS214_Group_Project>
 
 `git init` `git clone https://github.com/reedalexandria/EDS214_Group_Project`
 
-# Analysis {#analysis}
+# Analysis 
 
 We first looked at the nitrate and potassium levels at three sites in the Loquillo Experimental Forest:
 
@@ -31,15 +31,15 @@ We saw noticeable increases in both nitrate and potassium levels following Hurri
 
 Based on the original analysis from William McDowell, ammonia levels also changed during the hurricane. We were unable to come to the same conclusion with our analysis of ammonia levels due to large amounts of missing data. But given more time, we could pursue this investigation further.
 
-# Acknowledgements {#acknowledgements}
+# Acknowledgements 
 
 This project was produced by students of the Master of Environmental Data Science program in the Bren School of Environmental Science & Management at University of Califronai, Santa Barbara.
 
-### Authors {#authors}
+### Authors 
 
 Coding, design, and analytical work was done by: - Alexandria Reed - Erica Bishop - Gabrielle Smith - Ruth Enriquez
 
-### Resources {#resources}
+### Resources 
 
 Data were pulled from:
 
