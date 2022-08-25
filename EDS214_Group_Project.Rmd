@@ -51,6 +51,7 @@ Joined_Sub <- Joined %>%
   select(Sample_ID, monthyear, meanK) %>% 
   distinct(monthyear, meanK)
 
+ Joined_Sub
 #add mean K values to joined data (including data for all available years)
 Joined <- Joined %>% 
   group_by(monthyear, Sample_ID) %>% 
@@ -58,12 +59,13 @@ Joined <- Joined %>%
   select(Sample_ID, monthyear, meanK) %>% 
   distinct(monthyear, meanK)
 
+max(Joined_Sub$meanK)
 ```
 
 ```{r}
 #create a ggplot of subsetted data
 ggplot(data=Joined_Sub, aes(x=monthyear, y=meanK)) + geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
-  theme(aspect.ratio = 1/3)
+  theme(aspect.ratio = 1/3) 
 ```
 ```{r}
 #create a ggplot for all available data 
