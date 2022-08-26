@@ -304,4 +304,10 @@ NH_all <- ggplot(data=Joined, aes(x=monthyear, y=meanNH)) +
 NH_all
 ```
 
+___
+
+## Find more of our work:
+class: center, middle
+![](/courses/EDS214/gg_girls/images/github-groupproject-qr.png)
+
 
