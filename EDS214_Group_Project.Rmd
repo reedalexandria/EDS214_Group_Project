@@ -180,8 +180,7 @@ ggplotly(K_subset)
 ```{r, warning=FALSE, fig.height=4, fig.width=11}
 #Nitrate (subset) :
 #create a ggplot of subsetted data
-ny <- expression(NO[3]^' -')
-
+ny <- 'NO3-'
 N_subset <- ggplot(data=Joined_Sub_N, aes(x=monthyear, y=meanN)) + 
   geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
   theme(aspect.ratio = 1/3,
@@ -190,7 +189,6 @@ N_subset <- ggplot(data=Joined_Sub_N, aes(x=monthyear, y=meanN)) +
   annotate("text", x = 1993, y = 600, label = "Hurricane Hugo") +
   labs(x = "Years",
        y = ny)
-
 ggplotly(N_subset)
 ```
 
