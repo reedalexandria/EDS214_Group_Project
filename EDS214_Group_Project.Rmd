@@ -7,7 +7,7 @@ output:
     nature:
       highlightStyle: style_duo_accent
       highlightLines: true
-date: "2022-09-24"
+date: "2022-09-26"
 ---
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -34,7 +34,7 @@ library(DiagrammeR)
 
 ## Workflow
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.align='center'}
 DiagrammeR::grViz(diagram = "digraph flowchart {
 node [Title = Workflow, fontname = Arial, shape = oval, color = grey, style = filled]
   tab1 [label = '@@1']
@@ -77,6 +77,7 @@ node [Title = Workflow, fontname = Arial, shape = oval, color = grey, style = fi
 ")
 ```
 
+---
 
 ## Read in the Data
 
@@ -122,9 +123,9 @@ Joined <- Joined %>%
          Month = lubridate::month(Sample_Date),
          monthyear = zoo::as.yearmon(paste(Year, Month), "%Y %m")) 
 
-#subset joined data to select for years 1989-1992
+#subset joined data to select for years 1989-1994
 Joined_Sub <- Joined %>% 
-  filter(Year >=1989 & Year <= 1994)
+  filter(Year >=1988 & Year <= 1994)
 ```
 
 ---
@@ -189,6 +190,7 @@ N_subset <- ggplot(data=Joined_Sub_N, aes(x=monthyear, y=meanN)) +
   annotate("text", x = 1993, y = 600, label = "Hurricane Hugo") +
   labs(x = "Years",
        y = ny)
+
 ggplotly(N_subset)
 ```
 
@@ -237,7 +239,7 @@ K_all <- ggplot(data=Joined, aes(x=monthyear, y=meanK)) +
 
 ## Potassium Plot (all years)
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.width=10, fig.align='center'}
 K_all
 ```
 
@@ -245,7 +247,7 @@ K_all
 
 ## Nitrate Plot (all years)
 
-```{r, warning = FALSE, fig.height = 4, fig.width = 11}
+```{r, warning = FALSE}
 #Nitrate Plot (all available years)
 #Add vertical line to show when hurricane Hugo happened
 
@@ -268,7 +270,7 @@ N_all <- ggplot(data=Joined, aes(x=monthyear, y=meanN)) +
 
 ## Nitrate Plot (all years)
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.width=10, fig.align='center'}
 N_all
 ```
 
@@ -276,7 +278,7 @@ N_all
 
 ## Stacked Plots
 
-```{r, warning=FALSE, fig.height = 4, fig.width = 11, echo = FALSE}
+```{r, warning=FALSE, fig.height = 8, fig.width = 11, echo = FALSE}
 #Patchwork - combining Potassium Plot & Nitrate Plot
 
 (K_all) / (N_all)
@@ -308,9 +310,17 @@ NH_all <- ggplot(data=Joined, aes(x=monthyear, y=meanNH)) +
 
 ---
 
+## Ask your own question!
+
+'Nitrate, potassium and ammonium concentrations increased after the hurricane and remained elevated for up to 2 y. Sulphate, chloride, sodium, magnesium and calcium showed smaller relative significant changes' (Schaefer, McDowell, Scatena, Asbury). 
+
+Our goal: visualize ammonium concentrations in Luquillo watersheds.
+
+---
+
 ##Ammonium Plot (all years)
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning = FALSE, fig.width= 10, fig.align='center'}
 NH_all
 ```
 
