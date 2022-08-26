@@ -192,7 +192,7 @@ N_subset <- ggplot(data=Joined_Sub_N, aes(x=monthyear, y=meanN)) +
   theme(aspect.ratio = 1/3,
         legend.title=element_blank())  + 
   geom_vline(xintercept = 1989.75) +
-  annotate("text", x = 1990.3, y = 600, label = "Hurricane Hugo") +
+  annotate("text", x = 1990.5, y = 600, label = "Hurricane Hugo") +
   labs(x = "Years",
        y = ny)
 ggplotly(N_subset)
@@ -266,7 +266,7 @@ N_all <- ggplot(data=Joined, aes(x=monthyear, y=meanN)) +
   labs(x = "Years",
        y = y2) + 
   geom_vline(xintercept = 1989.75, color = "black", size = 0.5) +
-  annotate("text", x = 1990.3, y = 700, label = "Hurricane Hugo",
+  annotate("text", x = 1993, y = 700, label = "Hurricane Hugo",
            color = "black", size = 3)
 ```
 
