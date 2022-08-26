@@ -281,7 +281,7 @@ N_all
 #Ammonium Plot (all available years)
 #Add vertical line to show when hurricane Hugo happened
 
-y3 <- expression(NH[4]^'+')
+y3 <- expression(NH[4]^' +')
 
 NH_all <- ggplot(data=Joined, aes(x=monthyear, y=meanNH)) + 
   geom_line(aes(color=Sample_ID, linetype=Sample_ID)) +
