@@ -313,4 +313,10 @@ Our goal: visualize ammonium concentrations in Luquillo watersheds.
 NH_all
 ```
 
+___
+
+## Find more of our work:
+class: center, middle
+![](/courses/EDS214/gg_girls/images/github-groupproject-qr.png)
+
 
